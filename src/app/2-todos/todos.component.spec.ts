@@ -33,7 +33,7 @@ describe('TodosComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should load todos from the server', () => {
+    //let service = TestBed.get(TodoService);
   });
 });
