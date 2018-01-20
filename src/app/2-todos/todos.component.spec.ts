@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { Observable } from 'rxjs';
 
 import { TodosComponent } from './todos.component';
 import { TodoService } from './todo.service';
@@ -30,11 +31,14 @@ describe('TodosComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TodosComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+
   });
 
   it('should load todos from the server', () => {
-    // let service = TestBed.get(TodoService);
-    fixture.debugElement.injector.get();
+    let service = TestBed.get(TodoService);
+    spyOn(service, 'getTodos').and.returnValue(Observable.from([[ 1, 2, 3 ]]));
+
+    fixture.detectChanges();
+    expect(component.todos.length).toBe(3);
   });
 });
