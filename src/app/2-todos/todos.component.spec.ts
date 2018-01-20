@@ -34,6 +34,7 @@ describe('TodosComponent', () => {
   });
 
   it('should load todos from the server', () => {
-    //let service = TestBed.get(TodoService);
+    // let service = TestBed.get(TodoService);
+    fixture.debugElement.injector.get();
   });
 });
