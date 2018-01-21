@@ -17,6 +17,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   save() { 
-    this.router.navigate(['users']);
+   this.router.navigate(['users']);
   }
 }
