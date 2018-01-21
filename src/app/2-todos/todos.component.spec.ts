@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -34,14 +34,13 @@ describe('TodosComponent', () => {
 
   });
 
-  it('should load todos from the server', async(() => {
+  it('should load todos from the server', fakeAsync(() => {
     let service = TestBed.get(TodoService);
     spyOn(service, 'getTodosPromise').and.returnValue(Promise.resolve([ 1, 2, 3 ]));
 
     fixture.detectChanges();
 
-    fixture.whenStable().then(() => {
-      expect(component.todos.length).toBe(3);
-    });
+    tick();
+    expect(component.todos.length).toBe(3);
   }));
 });
